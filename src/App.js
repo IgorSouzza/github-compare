@@ -2,13 +2,13 @@ import React from 'react';
 
 import GlobalStyle from './styles/global';
 
-function App() {
-  return (
-    <>
-      <GlobalStyle />
-      <div className="App" />
-    </>
-  );
-}
+import Main from './pages/Main';
+
+const App = () => (
+  <>
+    <GlobalStyle />
+    <Main />
+  </>
+);
 
 export default App;
