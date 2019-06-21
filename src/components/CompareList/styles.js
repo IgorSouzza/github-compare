@@ -14,6 +14,7 @@ export const Repository = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 10px;
+  position: relative;
 
   header {
     padding: 30px;
@@ -53,6 +54,31 @@ export const Repository = styled.div`
       &:nth-child(2n - 1) {
         background: #F5F5F5;
       }
+    }
+  }
+
+  button {
+    background: #63F5B8;
+    border: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #FFF;
+    cursor: pointer;
+    height: 35px;
+    &:hover {
+      background: #52D89F;
+    }
+  }
+
+  .deleteButton {
+    width: 20px;
+    height: 20px;
+    background: #F00;
+    border-radius: 0;
+    position: absolute;
+    right: 0;
+    &:hover {
+      background: #ff3030;
     }
   }
 `;

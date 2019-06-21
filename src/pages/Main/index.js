@@ -39,6 +39,20 @@ export default class Main extends Component {
     }
   }
 
+  handleRefreshRepository = () => {
+    alert('refresh');
+  }
+
+  handleDeleteRepository = (id) => {
+    const { repositories } = this.state;
+    const filteredRepositories = repositories.filter((value) => {
+      const clickedId = value.id;
+      return clickedId !== id;
+    });
+
+    this.setState({ repositories: filteredRepositories });
+  }
+
   render() {
     const {
       loading,
@@ -62,7 +76,11 @@ export default class Main extends Component {
             {loading ? <i className="fa fa-spinner fa-pulse" /> : 'OK'}
           </button>
         </Form>
-        <CompareList repositories={repositories} />
+        <CompareList
+          repositories={repositories}
+          refreshRepository={this.handleRefreshRepository}
+          deleteRepository={this.handleDeleteRepository}
+        />
       </Container>
     );
   }

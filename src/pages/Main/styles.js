@@ -26,6 +26,7 @@ export const Form = styled.form`
 
   button {
     height: 55px;
+    width: 70px;
     padding: 0 20px;
     margin-left: 10px;
     background: #63F5B8;
