@@ -45,8 +45,21 @@ export default class Main extends Component {
     }
   }
 
-  handleRefreshRepository = async (id, repositoryName) => {
-    //
+  handleRefreshRepository = async (id) => {
+    const { repositories } = this.state;
+    const repository = repositories.find(repo => repo.id === id);
+
+    try {
+      const { data } = await api.get(`/repos/${repository.full_name}`);
+      data.lastCommit = moment(data.pushed_at).fromNow();
+
+      this.setState({
+        repositories: repositories.map(repo => (repo.id === data.id ? data : repo)),
+      });
+      localStorage.setItem('repositories', JSON.stringify(repositories));
+    } catch (err) {
+      this.setState({ repositoryError: true });
+    }
   }
 
   handleDeleteRepository = (id) => {
