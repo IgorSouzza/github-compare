@@ -27,7 +27,7 @@ const CompareList = ({ repositories, refreshRepository, deleteRepository }) => (
             {repository.lastCommit} <small>last commit</small>
           </li>
         </ul>
-        <button type="submit" onClick={refreshRepository}>Atualizar</button>
+        <button type="submit" onClick={() => refreshRepository(repository.id, repository.full_name)}>Atualizar</button>
         <button type="submit" onClick={() => deleteRepository(repository.id)} className="deleteButton">X</button>
       </Repository>
     ))}

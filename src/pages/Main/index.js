@@ -16,6 +16,11 @@ export default class Main extends Component {
     repositories: [],
   };
 
+  componentDidMount() {
+    const storage = localStorage.getItem('repositories');
+    this.setState({ repositories: storage != null ? JSON.parse(storage) : [] });
+  }
+
   handleAddRepository = async (e) => {
     e.preventDefault();
     this.setState({ loading: true });
@@ -32,6 +37,7 @@ export default class Main extends Component {
         repositoryInput: '',
         repositories: [...repositories, repository],
       });
+      localStorage.setItem('repositories', JSON.stringify([...repositories, repository]));
     } catch (err) {
       this.setState({ repositoryError: true });
     } finally {
@@ -39,8 +45,8 @@ export default class Main extends Component {
     }
   }
 
-  handleRefreshRepository = () => {
-    alert('refresh');
+  handleRefreshRepository = async (id, repositoryName) => {
+    //
   }
 
   handleDeleteRepository = (id) => {
@@ -51,6 +57,7 @@ export default class Main extends Component {
     });
 
     this.setState({ repositories: filteredRepositories });
+    localStorage.setItem('repositories', JSON.stringify(filteredRepositories));
   }
 
   render() {
